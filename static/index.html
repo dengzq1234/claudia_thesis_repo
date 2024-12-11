@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claudia's Thesis Tree Repo</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Claudia's Thesis Tree Repository</h1>
+    </header>
+    <main>
+        <div id="tree-list" class="container">
+            <div id="categories" class="categories-container"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Claudia's Thesis Tree Repo</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categoriesDiv = document.getElementById("categories");
+
+            // Fetch tree data from the backend
+            fetch('/api/trees')
+                .then(response => response.json())
+                .then(data => {
+                    const categories = data.categories;
+                    for (const [category, trees] of Object.entries(categories)) {
+                        // Create a category card
+                        const categoryCard = document.createElement("div");
+                        categoryCard.classList.add("category-card");
+
+                        // Add header for category
+                        const categoryHeader = document.createElement("div");
+                        categoryHeader.classList.add("card-header");
+                        categoryHeader.textContent = category;
+                        categoryCard.appendChild(categoryHeader);
+
+                        // Create a table for the trees in the category
+                        const table = document.createElement("table");
+                        table.classList.add("tree-table");
+
+                        // Add table headers
+                        const thead = document.createElement("thead");
+                        thead.innerHTML = `
+                            <tr>
+                                <th>Tree Name</th>
+                                <th>Action</th>
+                            </tr>
+                        `;
+                        table.appendChild(thead);
+
+                        // Add table body
+                        const tbody = document.createElement("tbody");
+                        trees.forEach(tree => {
+                            const tr = document.createElement("tr");
+
+                            // Tree name cell
+                            const nameCell = document.createElement("td");
+                            nameCell.textContent = tree.name;
+                            tr.appendChild(nameCell);
+
+                            // Action cell
+                            const actionCell = document.createElement("td");
+                            const link = document.createElement("a");
+                            link.href = `/tree/${tree.id}`;
+                            link.textContent = "View Tree";
+                            link.classList.add("btn");
+                            actionCell.appendChild(link);
+                            tr.appendChild(actionCell);
+
+                            tbody.appendChild(tr);
+                        });
+
+                        table.appendChild(tbody);
+                        categoryCard.appendChild(table);
+                        categoriesDiv.appendChild(categoryCard);
+                    }
+                })
+                .catch(error => console.error("Error fetching trees:", error));
+        });
+    </script>
+</body>
+</html>

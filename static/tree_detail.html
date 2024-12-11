@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{tree_name}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Explore Tree: {{tree_name}}</h1>
+            <div class="header-buttons">
+                <button id="homeButton" class="btn">Back Home</button>
+                <button id="prevButton" class="btn">Previous Tree</button>
+                <button id="nextButton" class="btn">Next Tree</button>
+                <button id="fullscreenButton" class="btn">Fullscreen</button>
+                <button id="refreshButton" class="btn">Refresh</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container-fluid mt-4">
+            <!-- Iframe container -->
+            <div class="position-relative mt-3">
+                <iframe src="{{url_link}}" id="treeIframe" width="100%" height="800px" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Claudia's Thesis Tree Repo</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Get references to buttons and iframe
+        const currentTreeId = {{tree_id}}; // Ensure tree_id is passed to this template from backend
+        const iframe = document.getElementById('treeIframe');
+
+        // Button Actions
+        document.getElementById('refreshButton').addEventListener('click', () => {
+            iframe.src = iframe.src; // Reload the iframe
+        });
+
+        document.getElementById('homeButton').addEventListener('click', () => {
+            window.location.href = '/'; // Navigate back to homepage
+        });
+
+        document.getElementById('prevButton').addEventListener('click', () => {
+            const prevId = currentTreeId - 1;
+            if (prevId > 0) {
+                window.location.href = `/tree/${prevId}`; // Navigate to previous tree
+            } else {
+                alert("This is the first tree.");
+            }
+        });
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+            const nextId = currentTreeId + 1;
+            window.location.href = `/tree/${nextId}`; // Navigate to next tree
+        });
+
+        document.getElementById('fullscreenButton').addEventListener('click', () => {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen(); // Firefox
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen(); // Chrome, Safari
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen(); // IE/Edge
+            }
+        });
+    </script>
+</body>
+</html>

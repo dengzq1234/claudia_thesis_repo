@@ -1,0 +1,167 @@
+/* General body styles */
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e8ecef; /* Soft neutral tone for a calming background */
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background-color: #2c3e50; /* Muted dark blue for a professional look */
+    color: white;
+    padding: 0.5rem; /* Thinner padding for a less bulky header */
+    text-align: center;
+    font-size: 1.2rem; /* Moderate font size for readability */
+    letter-spacing: 0.02rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Buttons container in the header */
+.header-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Spacing between buttons */
+}
+
+/* Button styles */
+.header-buttons .btn {
+    padding: 0.6rem 1rem; /* Slightly smaller buttons for balance */
+    background-color: #1abc9c; /* Calm teal for harmony with the background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem; /* Comfortable button text size */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.header-buttons .btn:hover {
+    background-color: #16a085; /* Slightly darker teal on hover */
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.header-buttons .btn:active {
+    transform: translateY(0); /* Reset effect on click */
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 0.5rem; /* Thinner padding for the footer */
+    background-color: #2c3e50; /* Match header for consistency */
+    color: white;
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Main content styles */
+main {
+    padding: 1.5rem; /* Moderate padding */
+    width: 100%; /* Use full width of the screen */
+    margin: 0;
+    text-align: center;
+}
+
+/* Iframe container */
+iframe {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Index */
+/* Container for categories */
+/* Categories container */
+.categories-container {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    gap: 1.5rem; /* Space between cards */
+    padding: 1rem;
+    width: 80%; /* Restrict to 80% of the screen width */
+    margin: 0 auto; /* Center align horizontally */
+}
+
+
+/* Category card */
+.category-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width */
+    max-width: 100%; /* Remove width restriction */
+    overflow: hidden;
+    margin: 0 auto; /* Center alignment */
+}
+
+/* Card header */
+.card-header {
+    background-color: #2c3e50; /* Soft dark color */
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Table styles */
+.tree-table {
+    width: 100%;
+    table-layout: fixed; /* Ensures uniform column widths */
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tree-table th, .tree-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tree-table th {
+    background-color: #f4f4f4;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Define specific column widths */
+.tree-table th:first-child, .tree-table td:first-child {
+    width: 70%; /* Tree Name column width */
+}
+
+.tree-table th:last-child, .tree-table td:last-child {
+    width: 30%; /* Action column width */
+}
+
+.tree-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.tree-table td {
+    font-size: 1rem;
+}
+
+/* Button styles */
+.btn {
+    padding: 0.5rem 1rem;
+    background-color: #1abc9c;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #16a085;
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
